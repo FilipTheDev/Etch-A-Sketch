@@ -1,0 +1,27 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.cont {
+    display: flex;
+    width: 790px;
+    height: 790px;    
+}
+
+.row {
+    width: 790px;
+}
+
+.card {
+    border: 1px solid black;
+    /* min-width: 6px;
+    min-height: 6px; */
+    height: 30px;
+    width: 30px;
+    flex-basis: max-content;
+}
+
+.card:hover {
+    background-color: blueviolet;
+}
