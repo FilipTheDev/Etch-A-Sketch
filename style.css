@@ -1,27 +1,68 @@
 body {
-    padding: 0;
-    margin: 0;
-}
+    line-height: 1;
+  }
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
 
-.cont {
+  .flex-container {
+    height: 100vh;
+    width: 100vw;
     display: flex;
-    width: 790px;
-    height: 790px;    
-}
-
-.row {
-    width: 790px;
-}
-
-.card {
-    border: 1px solid black;
-    /* min-width: 6px;
-    min-height: 6px; */
-    height: 30px;
-    width: 30px;
-    flex-basis: max-content;
-}
-
-.card:hover {
-    background-color: blueviolet;
-}
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(rgba(96, 79, 252, 0.082), white);
+  }
+  .board {
+    width: 80%;
+    height: 80%;
+    display: grid;
+    background-color: white;
+    box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0 0 0 2px rgb(255, 255, 255),
+      0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+  }
+  .board:hover {
+    cursor: pointer;
+  }
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 300px;
+    min-height: 300px;
+    width: 60vw;
+    height: 60vw;
+    max-width: 600px;
+    max-height: 600px;
+  }
+  .title {
+    display: flex;
+    justify-content: center;
+  }
+  .buttons {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  button {
+    padding: 0.3em 1.2em;
+    margin: 0 0.3em 0.3em 0;
+    border-radius: 2em;
+    text-decoration: none;
+    font-weight: 600;
+    text-align: center;
+    transition: all 0.2s;
+  }
+  button:hover {
+    cursor: pointer;
+  }
+  input {
+    width: 50px;
+  }
+  
+  .mode {
+    margin-bottom: 5px;
+  }
+  .error {
+    display: none;
+  }

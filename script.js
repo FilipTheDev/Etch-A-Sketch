@@ -1,46 +1,52 @@
-let cont = document.getElementsByClassName("cont");
-let card = document.createElement("div");
-card.setAttribute("class", "card");
-function cards() {
-    // for(i = 0; i < 256; i++) {
-    //         let card = document.createElement("div");
-    //         card.setAttribute("class", "card");
-    //         cont[0].appendChild(card);
-    // }
+let color = "random";
+let click = true;
 
-    for(j = 0; j < 16; j++) {
-        let row = document.createElement("div");
-        row.setAttribute("class", "row");
-        cont[0].appendChild(row);
-        let br = document.createElement("br");
-        cont[0].appendChild(br);
-        for(i = 0; i < 16; i++) {
-            let card = document.createElement("div");
-            card.setAttribute("class", "card");
-            row.appendChild(card);
-        }
-    }
-}
-cards();
+function populateBoard(size) {
+  let board = document.querySelector(".board");
+  let squares = board.querySelectorAll("div");
+  squares.forEach((div) => div.remove());
+  board.style.gridTemplateColumns = `repeat(${size} , 1fr)`;
+  board.style.gridTemplateRows = `repeat(${size} , 1fr)`;
 
-function manualGrid() {
-    cont[0].innerHTML = "";
-    let gridSideNumber = prompt("How many grinds grids on side would you like?");
-    if(gridSideNumber <= 100) {
-        for(j = 0; j < gridSideNumber; j++) {
-            let row = document.createElement("div");
-            row.setAttribute("class", "row");
-            cont[0].appendChild(row);
-            let br = document.createElement("br");
-            cont[0].appendChild(br);
-            for(i = 0; i < gridSideNumber; i++) {
-                let card = document.createElement("div");
-                card.setAttribute("class", "card");
-                row.appendChild(card);
-            }
-        }
-    }
-    else if(gridSideNumber > 100 || gridSideNumber !== Number) {
-        Alert("You put a numebr bigger than 100 or not a number");
-    }
+  let amount = size * size;
+  for (let i = 0; i < amount; i++) {
+    let square = document.createElement("div");
+    square.addEventListener("mouseover", colorSquare);
+    square.style.backgroundColor = "white";
+    board.insertAdjacentElement("beforeend", square);
+  }
 }
+
+populateBoard(16);
+
+function changeSize(input) {
+  if (input >= 2 && input <= 100) {
+    document.querySelector(".error").style.display = "none";
+    populateBoard(input);
+  } else {
+    document.querySelector(".error").style.display = "flex";
+  }
+}
+
+function colorSquare() {
+  if (click) {
+      this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+  }
+}
+
+function resetBoard() {
+  let board = document.querySelector(".board");
+  let squares = board.querySelectorAll("div");
+  squares.forEach((div) => (div.style.backgroundColor = "white"));
+}
+
+document.querySelector("body").addEventListener("click", (e) => {
+  if (e.target.tagName != "BUTTON") {
+    click = !click;
+    if (click) {
+      document.querySelector(".mode").textContent = "Mode: Coloring";
+    } else {
+      document.querySelector(".mode").textContent = "Mode: Not Coloring";
+    }
+  }
+});

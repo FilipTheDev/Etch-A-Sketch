@@ -1,17 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Document</title>
-</head>
-<body>
-    <div class="cont">
-
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Etch-A-Sketch</title>
+  </head>
+  <body>
+    <div class="flex-container">
+      <div class="title"><h1>Etch-A-Sketch</h1></div>
+      <div class="mode">Mode: Coloring</div>
+      <div class="content">
+        <div class="board"></div>
+        <div class="buttons">
+          <button onclick="resetBoard()">Reset</button>
+        </div>
+        <div>
+          <input
+            type="text"
+            placeholder="Size of Board"
+            value="16"
+            onchange="changeSize(this.value)"
+          />
+          <button>Set Size</button>
+        </div>
+        <div class="error">Input must be between 2 and 100</div>
+      </div>
     </div>
-    <button onclick="manualGrid();">Set manual grid</button>
-    <script src="script.js"></script>
-</body>
+  </body>
+  <script src="script.js"></script>
 </html>
